@@ -8,6 +8,8 @@ from utils.dataset import DataSet
 from utils.generate_test_splits import kfold_split, get_stances_for_folds
 from utils.score import report_score, LABELS, score_submission
 
+from utils.system import parse_params, check_version
+
 
 def generate_features(stances,dataset,name):
     h, b, y = [],[],[]
@@ -30,10 +32,9 @@ def generate_features(stances,dataset,name):
 
 
 if __name__ == "__main__":
+    check_version()
+    parse_params()
 
-    if sys.version_info.major < 3:
-        sys.stderr.write('Please use Python version 3 and above\n')
-        sys.exit(1)
 
     d = DataSet()
     folds,hold_out = kfold_split(d,n_folds=10)
