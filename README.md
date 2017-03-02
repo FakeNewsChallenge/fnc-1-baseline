@@ -72,17 +72,11 @@ The ``report_score`` function in ``utils/score.py`` is based off the original sc
 
 This will print a confusion matrix and a final score your classifier. We provide the scores for a classifier with a simple set of features which you should be able to match and eventually beat!
 
--------------------------------------------------------------
-|           |   agree   | disagree  |  discuss  | unrelated |
--------------------------------------------------------------
-|   agree   |    94     |    23     |    58     |     7     |
--------------------------------------------------------------
-| disagree  |     3     |     1     |     2     |     0     |
--------------------------------------------------------------
-|  discuss  |    624    |    121    |   1341    |    106    |
--------------------------------------------------------------
-| unrelated |    88     |    24     |    237    |   7400    |
--------------------------------------------------------------
-
+|               | agree         | disagree      | discuss       | unrelated     |
+|-----------    |-------        |----------     |---------      |-----------    |
+| agree         | 94            | 23            | 58            | 7             |
+| disagree      | 3             | 1             | 2             | 0             |
+| discuss       | 624           | 121           | 1341          | 106           |
+| unrelated     | 88            | 24            | 237           | 7400          |
 
 Score: 3493.75 out of 4317.25     (80.92%)
