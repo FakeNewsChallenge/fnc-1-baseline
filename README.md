@@ -12,6 +12,7 @@ Credit:
 * Delip Rao (GitHub: @delip, Slack: @dr)
 * James Thorne (GitHub/Slack: @j6mes)
 * Yuxi Pan (GitHub: @yuxip, Slack: @yuxipan)
+* Byron Galbraith (Github: @bgalbraith, Slack: @byron)
 
 ## Questions / Issues
 Please raise questions in the slack group [fakenewschallenge.slack.com](https://fakenewschallenge.slack.com)
