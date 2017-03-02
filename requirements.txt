@@ -3,3 +3,4 @@ gensim
 sklearn
 numpy
 scipy
+nltk
