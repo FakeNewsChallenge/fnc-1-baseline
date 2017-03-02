@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 
 from sklearn.ensemble import GradientBoostingClassifier
@@ -29,6 +30,11 @@ def generate_features(stances,dataset,name):
 
 
 if __name__ == "__main__":
+
+    if sys.version_info.major < 3:
+        sys.stderr.write('Please use Python version 3 and above\n')
+        sys.exit(1)
+
     d = DataSet()
     folds,hold_out = kfold_split(d,n_folds=10)
     fold_stances, hold_out_stances = get_stances_for_folds(d,folds,hold_out)
