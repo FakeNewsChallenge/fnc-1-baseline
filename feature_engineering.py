@@ -20,7 +20,7 @@ def get_tokenized_lemmas(s):
 def clean(s):
     # Cleans a string: Lowercasing, trimming, removing non-alphanumeric
 
-    return " ".join(re.findall(r'\w+', s, flags=re.UNICODE | re.LOCALE)).lower()
+    return " ".join(re.findall(r'\w+', s, flags=re.UNICODE)).lower()
 
 
 def remove_stopwords(l):
@@ -207,4 +207,3 @@ def hand_features(headlines, bodies):
 
 
     return X
-
