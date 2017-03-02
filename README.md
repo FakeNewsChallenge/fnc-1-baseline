@@ -75,9 +75,8 @@ This will print a confusion matrix and a final score your classifier. We provide
 
 |               | agree         | disagree      | discuss       | unrelated     |
 |-----------    |-------        |----------     |---------      |-----------    |
-| agree         | 94            | 23            | 58            | 7             |
-| disagree      | 3             | 1             | 2             | 0             |
-| discuss       | 624           | 121           | 1341          | 106           |
-| unrelated     | 88            | 24            | 237           | 7400          |
-
-Score: 3493.75 out of 4317.25     (80.92%)
+| agree         | 119           | 3             | 560           | 80            |
+| disagree      | 14            | 131           | 131           | 15            |
+| discuss       | 59            | 4             | 1528          | 209           |
+| unrelated     | 5             | 1             | 100           | 6792          |
+Score: 3539.75 out of 4448.5	(79.57176576374059%)
