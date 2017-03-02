@@ -8,7 +8,7 @@ def generate_hold_out_split (dataset, training = 0.8, base_dir="splits"):
     r.seed(1489215)
 
     article_ids = list(dataset.articles.keys())  # get a list of article ids
-    random.shuffle(article_ids)  # and shuffle that list
+    r.shuffle(article_ids)  # and shuffle that list
 
 
     training_ids = article_ids[:int(training * len(article_ids))]

@@ -11,7 +11,7 @@ Credit:
 * HJ van Veen (GitHub/Slack: @mlwave)
 * Delip Rao (GitHub: @delip, Slack: @dr)
 * James Thorne (GitHub/Slack: @j6mes)
-
+* Yuxi Pan (GitHub: @yuxip, Slack: @yuxipan)
 
 ## Questions / Issues
 Please raise questions in the slack group [fakenewschallenge.slack.com](https://fakenewschallenge.slack.com)
@@ -72,11 +72,17 @@ The ``report_score`` function in ``utils/score.py`` is based off the original sc
 
 This will print a confusion matrix and a final score your classifier. We provide the scores for a classifier with a simple set of features which you should be able to match and eventually beat!
 
-|           	| agree 	| disagree 	| discuss 	| unrelated 	|
-|-----------	|-------	|----------	|---------	|-----------	|
-| agree     	| 106   	| 13      	| 56     	| 0         	|
-| disagree  	| 0     	| 3        	| 1      	| 0            	|
-| discuss   	| 553    	| 108      	| 1460     	| 150       	|
-| unrelated 	| 116   	| 29       	| 268    	| 6885      	|
+-------------------------------------------------------------
+|           |   agree   | disagree  |  discuss  | unrelated |
+-------------------------------------------------------------
+|   agree   |    94     |    23     |    58     |     7     |
+-------------------------------------------------------------
+| disagree  |     3     |     1     |     2     |     0     |
+-------------------------------------------------------------
+|  discuss  |    624    |    121    |   1341    |    106    |
+-------------------------------------------------------------
+| unrelated |    88     |    24     |    237    |   7400    |
+-------------------------------------------------------------
 
-Score: 3473.0 out of 4277.5     (81.19%)
+
+Score: 3493.75 out of 4317.25     (80.92%)

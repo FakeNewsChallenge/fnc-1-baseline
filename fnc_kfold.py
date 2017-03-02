@@ -64,7 +64,7 @@ if __name__ == "__main__":
         actual = [LABELS[int(a)] for a in y_test]
 
         fold_score, _ = score_submission(actual, predicted)
-        max_fold_score, _ = score_submission(predicted, predicted)
+        max_fold_score, _ = score_submission(actual, actual)
 
         score = fold_score/max_fold_score
 
