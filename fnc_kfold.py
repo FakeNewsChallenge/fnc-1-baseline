@@ -79,4 +79,4 @@ if __name__ == "__main__":
     predicted = [LABELS[int(a)] for a in best_fold.predict(X_holdout)]
     actual = [LABELS[int(a)] for a in y_holdout]
 
-    report_score(predicted,actual)
+    report_score(actual,predicted)
