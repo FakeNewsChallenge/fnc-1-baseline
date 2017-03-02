@@ -1,11 +1,11 @@
 # Baseline FNC implementation
 
-Information about the fake news challenge can be found on [FakeChallenge.org](http://fakenewschallenge.org). 
+Information about the fake news challenge can be found on [FakeChallenge.org](http://fakenewschallenge.org).
 
-This repository contains code that reads the dataset, extracts some simple features, trains a cross-validated model and 
+This repository contains code that reads the dataset, extracts some simple features, trains a cross-validated model and
 performs an evaluation on a hold-out set of data.
 
-Credit: 
+Credit:
 * Byron Galbraith (Github: @bgalbraith, Slack: @byron)
 * Humza Iqbal (GitHub: @humzaiqbal, Slack: @humza)
 * HJ van Veen (GitHub/Slack: @mlwave)
@@ -22,7 +22,7 @@ The FNC dataset is inlcuded as a submodule and can be FNC Dataset is included as
 
     git submodule init
     git submodule update
-    
+
 ## Useful functions
 ### dataset class
 The dataset class reads the FNC-1 dataset and loads the stances and article bodies into two separate containers.
@@ -36,7 +36,7 @@ You can access these through the ``.stances`` and ``.articles`` variables
 
 * ``.articles`` is a dictionary of articles, indexed by the body id. For example, the text from the 144th article can be printed with the following command:
    ``print(dataset.articles[144])``
-   
+
 ### Hold-out set split
 Data is split using the ``generate_hold_out_split()`` function. This function ensures that the article bodies between the training set are not present in the hold-out set. This accepts the following arguments. The body IDs are written to disk.
 
@@ -54,15 +54,15 @@ The training set is split into ``k`` folds using the ``kfold_split`` function. T
 * ``base_dir="splits"`` - directory to read dataset splits from or write to
 
 This returns 2 items: a array of arrays that contain the ids for stances for each fold, an array that contains the holdout stance IDs.
- 
+
 ### Getting headline/stance from IDs
-The ``get_stances_for_folds`` function returns the stances from the original dataset. See ``fnc_kfold.py`` for example usage. 
+The ``get_stances_for_folds`` function returns the stances from the original dataset. See ``fnc_kfold.py`` for example usage.
 
 
 
 ## Scoring Your Classifier
 
-The ``report_score`` function in ``utils/score.py`` is based off the original scorer provided in the FNC-1 dataset repository written by @bgalbraith. 
+The ``report_score`` function in ``utils/score.py`` is based off the original scorer provided in the FNC-1 dataset repository written by @bgalbraith.
 
 ``report_score`` expects 2 parameters. A list of actual stances (i.e. from the dev dataset), and a list of predicted stances (i.e. what you classifier predicts on the dev dataset). In addition to computing the score, it will also print the score as a percentage of the max score given any set of gold-standard data (such as from a  fold or from the hold-out set).
 
@@ -73,10 +73,10 @@ The ``report_score`` function in ``utils/score.py`` is based off the original sc
 
 This will print a confusion matrix and a final score your classifier. We provide the scores for a classifier with a simple set of features which you should be able to match and eventually beat!
 
-|               | agree         | disagree      | discuss       | unrelated     |
+|               |   agree       | disagree      |  discuss      | unrelated     |
 |-----------    |-------        |----------     |---------      |-----------    |
-| agree         | 119           | 3             | 560           | 80            |
-| disagree      | 14            | 131           | 131           | 15            |
-| discuss       | 59            | 4             | 1528          | 209           |
-| unrelated     | 5             | 1             | 100           | 6792          |
-Score: 3539.75 out of 4448.5	(79.57176576374059%)
+|   agree       |    118        |     3         |    556        |    85         |
+| disagree      |    14         |     3         |    130        |    15         |
+|  discuss      |    58         |     5         |   1527        |    210        |
+| unrelated     |     5         |     1         |    98         |   6794        |
+Score: 3538.0 out of 4448.5	(79.53242666067214%)
