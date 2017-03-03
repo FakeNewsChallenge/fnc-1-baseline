@@ -1,6 +1,6 @@
 tqdm
-gensim
 sklearn
 numpy
 scipy
 nltk
+argparse
