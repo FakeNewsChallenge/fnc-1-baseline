@@ -1,6 +1,5 @@
 import sys
 import numpy as np
-import argparse
 
 from sklearn.ensemble import GradientBoostingClassifier
 from feature_engineering import refuting_features, polarity_features, hand_features, gen_or_load_feats
