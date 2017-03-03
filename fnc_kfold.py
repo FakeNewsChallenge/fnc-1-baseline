@@ -29,6 +29,7 @@ def generate_features(stances,dataset,name):
     return X,y
 
 if __name__ == "__main__":
+    check_version()
     parse_params()
 
     d = DataSet()
