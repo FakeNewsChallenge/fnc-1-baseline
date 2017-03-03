@@ -1,5 +1,6 @@
 import sys
 import numpy as np
+import argparse
 
 from sklearn.ensemble import GradientBoostingClassifier
 from feature_engineering import refuting_features, polarity_features, hand_features, gen_or_load_feats
@@ -27,14 +28,8 @@ def generate_features(stances,dataset,name):
     X = np.c_[X_hand, X_polarity, X_refuting, X_overlap]
     return X,y
 
-
-
-
-
 if __name__ == "__main__":
-    check_version()
     parse_params()
-
 
     d = DataSet()
     folds,hold_out = kfold_split(d,n_folds=10)
