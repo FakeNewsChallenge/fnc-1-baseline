@@ -1,3 +1,4 @@
+*.tag*
 splits/*.txt
 features/*.npy
 *.pyc
