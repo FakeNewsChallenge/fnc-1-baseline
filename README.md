@@ -78,4 +78,4 @@ This will print a confusion matrix and a final score your classifier. We provide
 | disagree      |    14         |     3         |    130        |    15         |
 |  discuss      |    58         |     5         |   1527        |    210        |
 | unrelated     |     5         |     1         |    98         |   6794        |
-Score: 3538.0 out of 4448.5	(79.53242666067214%)
+Score: 3538.0 out of 4448.5	(79.53%)
