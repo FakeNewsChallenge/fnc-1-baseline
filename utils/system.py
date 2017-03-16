@@ -3,7 +3,6 @@ import os
 import re
 import argparse
 
-# supposed to work on windows
 def parse_params():
     parser = argparse.ArgumentParser(description='FakeNewsChallenge fnc-1-baseline')
     parser.add_argument('-c', '--clean-cache', action='store_true', default=False, help="clean cache files")
