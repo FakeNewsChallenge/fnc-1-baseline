@@ -1,5 +1,4 @@
 tqdm
-gensim
 sklearn
 numpy
 scipy
