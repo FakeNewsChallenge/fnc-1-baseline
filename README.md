@@ -1,11 +1,11 @@
-# Baseline FNC implementation
+# FNC implementation: Baseline + extensions
 
 Information about the fake news challenge can be found on [FakeChallenge.org](http://fakenewschallenge.org).
 
 This repository contains code that reads the dataset, extracts some simple features, trains a cross-validated model and
 performs an evaluation on a hold-out set of data.
 
-Credit:
+Utilities + Baseline implementation Credits:
 * Byron Galbraith (Github: @bgalbraith, Slack: @byron)
 * Humza Iqbal (GitHub: @humzaiqbal, Slack: @humza)
 * HJ van Veen (GitHub/Slack: @mlwave)
@@ -17,10 +17,16 @@ Credit:
 Please raise questions in the slack group [fakenewschallenge.slack.com](https://fakenewschallenge.slack.com)
 
 ## Getting Started
-The FNC dataset is inlcuded as a submodule and can be FNC Dataset is included as a submodule. You should download the fnc-1 dataset by running the following commands. This places the fnc-1 dataset into the folder fnc-1/
+The FNC dataset is included as a submodule and can be FNC Dataset is included as a submodule. You should download the fnc-1 dataset by running the following commands. This places the fnc-1 dataset into the folder fnc-1/
 
     git submodule init
     git submodule update
+    
+The nltk module needs some data to be installed. Please run the following on a Python session
+    
+    nltk.download() 
+
+All details are described in http://www.nltk.org/data.html 
 
 ## Useful functions
 ### dataset class
