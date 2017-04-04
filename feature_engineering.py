@@ -4,7 +4,7 @@ import nltk
 import numpy as np
 from sklearn import feature_extraction
 from tqdm import tqdm
-
+import warnings
 
 _wnl = nltk.WordNetLemmatizer()
 
@@ -50,24 +50,41 @@ def word_overlap_features(headlines, bodies):
         X.append(features)
     return X
 
+_refuting_words = [
+    'fake',
+    'fraud',
+    'hoax',
+    'false',
+    'deny', 'denies',
+    # 'refute',
+    'not',
+    'despite',
+    'nope',
+    'doubt', 'doubts',
+    'bogus',
+    'debunk',
+    'pranks',
+    'retract'
+]
+"""list of string
+
+A list of words that, if found on a headline, will probably be indicative of fake news.
+"""
+
 
 def refuting_features(headlines, bodies):
-    _refuting_words = [
-        'fake',
-        'fraud',
-        'hoax',
-        'false',
-        'deny', 'denies',
-        # 'refute',
-        'not',
-        'despite',
-        'nope',
-        'doubt', 'doubts',
-        'bogus',
-        'debunk',
-        'pranks',
-        'retract'
-    ]
+    """
+    For each headline returns 1 if it contains one of the refuting words.
+     0 otherwise.
+     
+    :param headlines: list of string
+        Headlines for documents
+    :param bodies: list fo string
+        Each one of the strings is a body of a document 
+    :return: A list of lists of 1/0's
+    """
+    if len(headlines)  != len(bodies):
+        warnings.warn("Warning: I got {0} headlines but {1} bodies".format(len(headlines), len(bodies)))
     X = []
     for i, (headline, body) in tqdm(enumerate(zip(headlines, bodies))):
         clean_headline = clean(headline)
