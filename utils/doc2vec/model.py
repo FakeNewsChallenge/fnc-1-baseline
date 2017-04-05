@@ -29,8 +29,9 @@ class Model:
         self.window = window
         self.min_count = min_count
         self.size = size
+        self.docs_bodies = docs_bodies
         # labeled sentences
-        self.sentences = LabeledLineSentence(docs_bodies)
+        self.sentences = LabeledLineSentence(self.docs_bodies)
         # Make the model and build the vocab
         # Internal parameters set:
         #   `workers` = use this many worker threads to train the model (=faster training with multicore machines).
