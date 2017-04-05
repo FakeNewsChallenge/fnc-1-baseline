@@ -1,5 +1,5 @@
 import unittest
-from labeled_line_sentence import LabeledLineSentence
+from utils.doc2vec.labeled_line_sentence import LabeledLineSentence
 from random import randint
 import pandas as pd
 
