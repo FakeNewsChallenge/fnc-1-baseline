@@ -14,8 +14,9 @@ class LabeledLineSentence(object):
 
     def __init__(self, bodies: pd.DataFrame):
         # let's make sure we have all columns we need (instead of duck-typing our code)
-        assert (set(bodies.columns) == set(self.columns_in_body)), \
-            "Dataframe doesn't have columns we need: {}".format(", ".join(self.columns_in_body))
+        assert (set(self.columns_in_body).issubset(set(bodies.columns))), \
+            "Dataframe doesn't have columns we need: {}; instead it has {}".format(", ".join(self.columns_in_body), ", ".join(bodies.columns))
+
         self.bodies = bodies
         # let's build the sentences' set:
         self.sentences = []
