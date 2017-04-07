@@ -8,6 +8,8 @@ import pandas as pd
 
 from random import shuffle
 
+from typing import List
+
 class LabeledLineSentence(object):
 
     columns_in_body = ['Sentence', 'Body ID', 'Sentence ID']
@@ -29,7 +31,7 @@ class LabeledLineSentence(object):
             self.sentences.append(LabeledSentence(nltk.word_tokenize(utils.to_unicode(text)), [name]))
 
 
-    def to_array(self):
+    def to_array(self) -> List[LabeledSentence]:
         """
         Left here for compatibility with the original notebook
         (as originally 'sentences' would be generated here)
