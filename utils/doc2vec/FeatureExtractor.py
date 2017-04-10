@@ -6,6 +6,7 @@ import pandas as pd
 # utils
 import string
 import nltk
+import h5py
 
 from utils.doc2vec.model import Model
 from utils.doc2vec.training_data import TrainingData
@@ -16,6 +17,14 @@ import matplotlib.pyplot as pl
 import subprocess
 
 class FeatureExtractor:
+    # Stance to one hot
+    stance_to_onehot = {
+        'agree': np.array([1, 0, 0, 0]),
+        'disagree': np.array([0, 1, 0, 0]),
+        'discuss': np.array([0, 0, 1, 0]),
+        'unrelated': np.array([0, 0, 0, 1])
+    }
+
     def __init__(self, my_model: Model, translate_table: dict):
         # Point to data, model, and translation table internally
         self.data = my_model.docs_bodies
@@ -93,6 +102,34 @@ class FeatureExtractor:
             m = np.array(m) - hvec
 
             self.features[i] = m
+
+    # Export features and targets
+    def feature_target_export(self, path):
+        if self.features is not None:
+            # Initialize hdf5
+            fh = h5py.File(path, 'w')
+            for hid, feature_matrix in self.features.items():
+                stance = data.loc[data['Headline ID'] == hid, 'Stance'].iloc[0]
+                grp = fh.create_group(str(hid))
+                grp.create_dataset('features', data=feature_matrix)
+                grp.create_dataset('targets', data=self.stance_to_onehot[stance])
+            fh.close()
+
+    def feature_target_load(self, fileName):
+
+        # Load features and targets
+        print('Loading and preparing data...')
+        fh = h5py.File(fileName, 'r')
+        # some kind of sanity check could be implemented here
+        for item in  fh.attrs.keys():
+            print("item: {} + : {}".format(item, fh.attrs[item]))
+        #
+        X = np.array([pad(fh[str(i)]['features'].value, 10) for i in range(len(fh.keys()))])
+        Y = np.array([fh[str(i)]['targets'].value for i in range(len(fh.keys()))])
+        fh.close()
+        return (X,Y)
+
+
 
 if __name__ == "__main__":
     # Running a full-fledged example of feature extraction from a corpus
