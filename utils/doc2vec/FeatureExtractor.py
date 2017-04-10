@@ -6,6 +6,7 @@ import pandas as pd
 # utils
 import string
 import nltk
+import h5py
 
 from utils.doc2vec.model import Model
 from utils.doc2vec.training_data import TrainingData
@@ -27,6 +28,14 @@ class FeatureExtractor:
 
         # Extract all sentence vectors
         self.svecs = {t :self.model.docvecs[t] for t in list(self.data.Tag.unique())}
+
+        # Stance to one hot
+        stance_to_onehot = {
+            'agree': np.array([1,0,0,0]),
+            'disagree': np.array([0,1,0,0]),
+            'discuss': np.array([0,0,1,0]),
+            'unrelated': np.array([0,0,0,1])
+        }
 
     # Function to infer vector representations of headlines
     def infer_vectors_headlines(self):
@@ -93,6 +102,18 @@ class FeatureExtractor:
             m = np.array(m) - hvec
 
             self.features[i] = m
+
+    # Export features and targets
+    def feature_target_export(self, path):
+        # Initialize hdf5
+        fh = h5py.File(path, 'w')
+
+        if self.features is not None:
+            for hid, feature_matrix in self.features.items():
+                stance = data.loc[data['Headline ID'] == hid, 'Stance'].iloc[0]
+                grp = fh.create_group(str(hid))
+                dset = grp.create_dataset('features', data=feature_matrix)
+                dset = grp.create_dataset('targets', data=stance_to_onehot[stance])
 
 if __name__ == "__main__":
     # Running a full-fledged example of feature extraction from a corpus
