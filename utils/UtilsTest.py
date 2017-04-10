@@ -3,6 +3,7 @@ from utils.Utils import get_git_root, append_to_git_root
 
 class UtilsTest(unittest.TestCase):
 
+# ################ path concatenation
     def test_path_concatenation_easy(self):
         partial_path = 'something/or/other'
         alt_root = "my/directory"
@@ -33,3 +34,6 @@ class UtilsTest(unittest.TestCase):
             self.assertEqual(res, 'something/or/other')
         else:
             self.assertEqual(res, '{}/{}'.format(git_root, 'something/or/other'))
+
+# ################ padding an array
+
