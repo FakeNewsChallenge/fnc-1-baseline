@@ -2,10 +2,14 @@
 import pandas as pd
 import nltk
 from tqdm import tqdm
+import re
 
 class TrainingData:
 
     def __init__(self, stances_file_name: str, bodies_file_name: str, translate_table: dict):
+        # function to clean text based on dictionary
+        clean_text = lambda x: re.sub("([0-9]+)((,|\.)?[0-9]*)", " ||number|| ", x.lower().translate(translate_table))
+
         #
         # We load the datasets from the fake news challenge into pandas data frames.
         # The article bodies are split into their component sentences. The article bodies
@@ -30,7 +34,7 @@ class TrainingData:
             bid = row[1]['Body ID']
             text = row[1]['articleBody']
             lines = nltk.sent_tokenize(text)
-            lines = [l.lower().translate(translate_table) for l in lines]
+            lines = [clean_text(l) for l in lines]
 
             sentences += lines
             sentence_ids += range(len(lines))
