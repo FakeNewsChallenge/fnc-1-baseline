@@ -3,3 +3,7 @@ sklearn
 numpy
 scipy
 nltk
+gensim
+pandas
+h5py
+matplotlib

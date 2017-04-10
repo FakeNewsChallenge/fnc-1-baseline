@@ -85,10 +85,10 @@ class Model:
         """
         sentences_as_strings = self.sentences.to_array()
 
-        sentences_as_strings: List[str] = list(map(str, self.sentences.to_array())) # .sort()
+        sentences_as_strings = list(map(str, self.sentences.to_array())) # .sort()
         sentences_as_strings.sort()
         #
-        sentences_in_bodies: str = " ".join(sentences_as_strings)
+        sentences_in_bodies = " ".join(sentences_as_strings)
         hash_for_sentences = hashlib.sha1(sentences_in_bodies.encode()).hexdigest()
         params_as_str = "w{}_mc{}_s{}".format(self.window, self.min_count, self.size)
         return "/".join([self.models_directory, hash_for_sentences, params_as_str])
