@@ -1,6 +1,6 @@
 import subprocess
 import os
-
+import numpy as np
 def get_git_root() -> str:
     """
     Gets git root of a project. If the code is not on git, returns empty string.
@@ -25,4 +25,24 @@ def append_to_git_root(what: str, alternate_root: str) -> str:
         return os.path.join(alternate_root, what)
     else:
         return os.path.join(git_root, what)
+
+
+def pad(X, maxlen):
+    """Pads with 0 or truncates a numpy array along axis 0 up to maxlen
+    Args:
+        X (ndarray): array to be padded or truncated
+        maxlen (int): maximum length of the array
+    Returns:
+        ndarray: padded or truncated array
+    """
+
+    nrows = X.shape[0]
+    delta = maxlen - nrows
+    if delta > 0:
+        padding = ((0,delta), (0,0))
+        return np.pad(X, pad_width=padding, mode='constant')
+    elif delta < 0:
+        return X[:maxlen,:]
+    else:
+        return X
 
