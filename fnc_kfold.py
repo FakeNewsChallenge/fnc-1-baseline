@@ -11,7 +11,7 @@ from utils.score import report_score, LABELS, score_submission
 from utils.system import parse_params, check_version
 
 
-def generate_features(stances,dataset,name):
+def generate_features(stances,dataset,name: str):
     h, b, y = [],[],[]
 
     for stance in stances:
@@ -27,10 +27,7 @@ def generate_features(stances,dataset,name):
     X = np.c_[X_hand, X_polarity, X_refuting, X_overlap]
     return X,y
 
-if __name__ == "__main__":
-    check_version()
-    parse_params()
-
+def run_fnc_kfold():
     d = DataSet()
     folds,hold_out = kfold_split(d,n_folds=10)
     fold_stances, hold_out_stances = get_stances_for_folds(d,folds,hold_out)
@@ -82,3 +79,10 @@ if __name__ == "__main__":
     actual = [LABELS[int(a)] for a in y_holdout]
 
     report_score(actual,predicted)
+
+
+if __name__ == "__main__":
+    check_version()
+    parse_params()
+
+    run_fnc_kfold()
