@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
     # Load the competition dataset
     competition_dataset = DataSet("competition_test")
-    X_final,y_final = generate_features(competition_dataset.stances, competition_dataset, "competition")
+    X_competition, y_competition = generate_features(competition_dataset.stances, competition_dataset, "competition")
 
     Xs = dict()
     ys = dict()
@@ -86,10 +86,14 @@ if __name__ == "__main__":
     predicted = [LABELS[int(a)] for a in best_fold.predict(X_holdout)]
     actual = [LABELS[int(a)] for a in y_holdout]
 
+    print("Scores on the dev set")
     report_score(actual,predicted)
+    print("")
+    print("")
 
     #Run on competition dataset
-    predicted = [LABELS[int(a)] for a in best_fold.predict(X_final)]
-    actual = [LABELS[int(a)] for a in y_final]
+    predicted = [LABELS[int(a)] for a in best_fold.predict(X_competition)]
+    actual = [LABELS[int(a)] for a in y_competition]
 
+    print("Scores on the test set")
     report_score(actual,predicted)
