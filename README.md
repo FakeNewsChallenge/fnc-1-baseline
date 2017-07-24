@@ -81,7 +81,7 @@ This will print a confusion matrix and a final score your classifier. We provide
 | disagree      |    39         |     7         |   413         |   238         |
 |  discuss      |    221        |     7         |   3556        |   680         |
 | unrelated     |    10         |     3         |   358         |   17978       |
-Score: 8761.75 out of 11651.25     (79.20%)
+Score: 8761.75 out of 11651.25     (75.20%)
 
 
 ### Hold-out split (for development)
